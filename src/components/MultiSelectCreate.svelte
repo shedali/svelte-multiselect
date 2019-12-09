@@ -2,75 +2,122 @@
   import InputField from "./InputField.svelte"  
   import MultiCreateItem from "./MultiCreateItem.svelte";
   import {writable, get, set} from "svelte/store";
-  
+  import {EditableField} from "@shedali/svelteeditableinput"
+  import {afterUpdate} from "svelte";
   // PUBLIC API
   export let canCreate = false;
   export let selectedValue = "";
-  export let selection = []
+  export let selection = [];
+  export let availableOptions= []
+  export let vertical = false;
+  export let buttonTitle = "select"
 
   //PRIVATE
   let isInteractive = false
-
   let searchValue = "";
-  
-  export let selectedOptions = writable(selection);
 
+  export let selectedOptions = writable(selection);
+  let ref;
   let addOption = (option)=>{
     const opts = get(selectedOptions)
     const newopts = opts.concat(option)
     selectedOptions.set(newopts)
     searchValue=""
+    isInteractive=false;
   }
 
   let removeOption = (toRemove)=>{
     const opts = get(selectedOptions)
     const newopts = get(selectedOptions).filter(o=>o!==toRemove)
     selectedOptions.set(newopts)
+    isInteractive=false;
   }
 
   let removeItems = (e)=>{
+    isInteractive=false
     const opts = get(selectedOptions)
     const newopts = opts.concat(searchValue)
     selectedOptions.set(newopts)
   }
 
   //DERIVED
-  let displayedOptions
-  $: displayedOptions = selection
+  let available, canPressEnter, found;
+  $: available = availableOptions
   .filter(v=>!$selectedOptions.includes(v))
   .filter(v=>v.match(searchValue))
+  $: found = available.length<2
+  $: canPressEnter = found && searchValue.length>2 && available;
 
-
+  afterUpdate(() => {
+    isInteractive && ref.focus();
+  });
 </script>
+
 <style>
+.change-button{
+  font-size: 18px;
+  font-weight: bolder;
+  padding:10px;
+  margin:10px;
+}
+.vertical {
+  display: flex;
+  justify-items: space-between;
+  flex-direction: column;
+}
 
+.return {
+  font-size:30px;
+}
 
+.option-item {
+  background-color: pink;
+  margin:1px;
+  border-radius:10px;
+  text-align:center;
+}
 
 ul, span {
   cursor: pointer;
+}
+
+.options-list {
+  max-width:100px;
+  display: flex;
+  flex-direction: column;
 }
 
 li {
   list-style: none;
 }
 </style>
-  <!-- <pre>debug {JSON.stringify($selectedOptions)}</pre> -->
+
+<!-- <pre>debug {JSON.stringify($selectedOptions)}</pre>
+<pre>debug {JSON.stringify(available)}</pre> -->
 
 <div on:keydown={(e)=>{
   if(e.keyCode===13){
-    searchValue="";
-  }
+    if(canPressEnter){
+      
+      addOption(available.toString().trim() || searchValue)
+      searchValue="";
+    }
+    
+  }return
   }}>
-      {#if !isInteractive}
-    <span on:click={()=>{
+    {#if !isInteractive}
+    <span class="change-button" on:click={()=>{
     isInteractive=!isInteractive;
-  }}>
-  select
+    }}>
+  {buttonTitle}
   </span>
 
 
   {:else}
-    <InputField on:blur={()=>{isInteractive=false;}} value={selectedValue} type="text" bind:value={searchValue}/>
+    <InputField 
+    bind:ref={ref}
+    on:blur={()=>{isInteractive=false;}}
+     value={selectedValue} type="text" bind:value={searchValue}/>
   {/if}
 
 
@@ -81,22 +128,23 @@ li {
     {searchValue}
   </span>
 {/if}
+{#if canPressEnter}
+  <span class="return">⏎</span> {available}
+{/if}
 
 
-<div data-testid="selected-items">
+<div data-testid="selected-items" class="selected-items" class:vertical={vertical}>
 {#each $selectedOptions as option, index}
     <span>
-  <MultiCreateItem title={option} closeHandler={removeOption}/>
+      <MultiCreateItem title={option} closeHandler={removeOption}/>
   </span>
 {/each}
 </div>
 
-{#if isInteractive}
-  <div>
-      <ul>      
-          {#each displayedOptions as option, index}
-              <li on:click={()=>addOption(option)}>{option}</li>
-          {/each}
-      </ul>
-  </div>
-{/if}
+
+
+<div class='options-list'>      
+    {#each available as option, index}
+        <span class="option-item" on:click={()=>addOption(option)}>{option}</span>
+    {/each}
+</div>

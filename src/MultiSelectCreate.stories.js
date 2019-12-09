@@ -7,10 +7,21 @@ export default {
 	decorators: [withKnobs]
 };
 
+export const VerticalList = () => ({
+	Component: MultiSelectCreate,
+	props: {
+		vertical: boolean('vertical', false),
+		selection: array('selection', []),
+		availableOptions: array('available', ['plum', 'tomato'])
+	}
+});
+
 export const createEnabled = () => ({
 	Component: MultiSelectCreate,
 	props: {
-		canCreate: true
+		canCreate: true,
+		selection: array('selection', ['german', 'french', 'italian']),
+		availableOptions: array('available options', ['german', 'french', 'italian', 'english', 'latin']),
 	}
 });
 
