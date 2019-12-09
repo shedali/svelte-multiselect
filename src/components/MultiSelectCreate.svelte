@@ -10,7 +10,7 @@
 
   //PRIVATE
   let isInteractive = false
-  let options = ["one", "two", "three"];
+
   let searchValue = "";
   
   export let selectedOptions = writable(selection);
@@ -36,7 +36,7 @@
 
   //DERIVED
   let displayedOptions
-  $: displayedOptions = options
+  $: displayedOptions = selection
   .filter(v=>!$selectedOptions.includes(v))
   .filter(v=>v.match(searchValue))
 
@@ -54,12 +54,7 @@ li {
   list-style: none;
 }
 </style>
-
-
-
-  <pre>debug {JSON.stringify($selectedOptions)}</pre>
-
-
+  <!-- <pre>debug {JSON.stringify($selectedOptions)}</pre> -->
 
 <div on:keydown={(e)=>{
   if(e.keyCode===13){

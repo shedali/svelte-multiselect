@@ -9,11 +9,12 @@
     div{
         vertical-align:middle;
         cursor: pointer;
-        border-radius: 30px;
+        border-radius: 10px;
         background-color: #eaeaea;
         display: inline;
-        padding:10px 20px;
-        margin:0 10px;
+        padding:5px 10px;
+        font-size: 12px;
+        margin:0 3px;
     }
 
     .remove-cross {
@@ -22,8 +23,8 @@
         margin-left:10px;
     }
     .remove-cross svg{
-        height: 13px;
-        width: 13px;
+        height: 10px;
+        width: 10px;
     }
 </style>
 

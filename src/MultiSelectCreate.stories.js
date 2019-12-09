@@ -29,15 +29,17 @@ export const SelectedItem = () => ({
 	Component: MultiSelectCreate,
 
 	props: {
-		selection: [text('selected item')]
+		selection: array('selection', ['apple', 'banana', 'potato'])
 	}
 });
 SelectedItem.story = {
 	name: 'Multi Select with an item pre-selected',
 	parameters: {
-		notes: `
-		This one has a preselected item. Use the knobs panel to change the value
-	  `,
+		notes: {
+			introduction: `
+			This one has a preselected item. Use the knobs panel to change the value`,
+			Second: 'empty'
+		},
 	},
 };
 
