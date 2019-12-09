@@ -1,0 +1,101 @@
+{
+  "description": "@shedali/multiselect",
+  "devDependencies": {
+    "@babel/core": "7.7.4",
+    "@babel/preset-env": "7.7.6",
+    "@storybook/addon-actions": "5.2.8",
+    "@storybook/addon-links": "5.2.8",
+    "@storybook/addon-notes": "5.2.8",
+    "@storybook/addons": "5.2.8",
+    "@storybook/svelte": "5.2.8",
+    "@testing-library/jest-dom": "4.2.4",
+    "@testing-library/svelte": "1.11.0",
+    "babel-jest": "24.9.0",
+    "babel-loader": "8.0.6",
+    "husky": "3.1.0",
+    "jest": "24.9.0",
+    "lint-staged": "9.5.0",
+    "npm-run-all": "4.1.5",
+    "prettier": "1.19.1",
+    "rollup": "1.27.7",
+    "rollup-plugin-commonjs": "10.1.0",
+    "rollup-plugin-livereload": "1.0.1",
+    "rollup-plugin-node-resolve": "5.2.0",
+    "rollup-plugin-svelte": "5.1.1",
+    "rollup-plugin-terser": "5.1.2",
+    "sirv-cli": "0.4.5",
+    "svelte": "3.16.0",
+    "svelte-jester": "1.0.3",
+    "svelte-loader": "2.13.6",
+    "typescript": "3.7.3"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "keywords": [
+    "svelte"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "run-s build test"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.svelte": [
+      "lint",
+      "git add"
+    ],
+    "src/**/*.ts": [
+      "lint",
+      "git add"
+    ],
+    "src/**/*.spec.ts": [
+      "ava"
+    ],
+    "cypress/**/*.spec.ts": [
+      "yarn build && yarn export && start-test serve 5999 spec "
+    ]
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.svelte$": [
+        "svelte-jester",
+        {
+          "preprocess": true
+        }
+      ]
+    },
+    "moduleFileExtensions": [
+      "js",
+      "svelte"
+    ],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom/extend-expect"
+    ]
+  },
+  "license": "unlicensed",
+  "main": "dist/index.min.js",
+  "module": "dist/index.min.mjs",
+  "name": "@shedali/multiselect",
+  "repository": "@shedali/multiselect",
+  "scripts": {
+    "build": "rollup -c",
+    "devserver": "rollup -c -w",
+    "dev": "run-p devserver storybook",
+    "start": "sirv public --single",
+    "start:dev": "sirv public --single --dev",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "test": "jest src",
+    "posttest": "npm run format",
+    "test:watch": "npm run test -- --watch",
+    "format": "prettier --write \"**/*.{js,css,md}\""
+  },
+  "svelte": "src/components/components.module.js",
+  "dependencies": {
+    "svelte-preprocess": "3.2.6"
+  }
+}
