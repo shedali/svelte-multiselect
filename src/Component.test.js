@@ -31,9 +31,3 @@ test('should remove item when close clicked', async ()=>{
   )
   expect(close).not.toBeInTheDocument()
 })
-
-
-test("shows proper heading when rendered", () => {
-	const { getByText } = render(Component, { name: "World" });
-	expect(getByText("Currently Selected")).toBeInTheDocument();
-});
