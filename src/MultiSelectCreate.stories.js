@@ -1,29 +1,28 @@
 import MultiSelectCreate from "./components/MultiSelectCreate.svelte";
 export default {
-    title: 'MultiSelectCreate',
+	title: "MultiSelectCreate"
 };
 
 export const create = () => ({
-    Component: MultiSelectCreate,
-    props: {
-        canCreate: true
-    }
+	Component: MultiSelectCreate,
+	props: {
+		canCreate: true
+	}
 });
 
-
 export const SelectedItem = () => ({
-    Component: MultiSelectCreate,
+	Component: MultiSelectCreate,
 
-    props: {
-        selection: ["Hello"]
-    }
-})
+	props: {
+		selection: ["Hello"]
+	}
+});
 
 export const noCreate = () => ({
-    Component: MultiSelectCreate,
-    props: {
-        canCreate: false
-    }
+	Component: MultiSelectCreate,
+	props: {
+		canCreate: false
+	}
 });
 
 // singleItem.story = {
