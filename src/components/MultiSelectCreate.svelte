@@ -76,7 +76,7 @@ li {
 
 </div> 
 
-{#if canCreate && !$selectedOptions.includes(searchValue)&& !options.includes(searchValue) && searchValue.length>2}
+{#if canCreate && !$selectedOptions.includes(searchValue)&& !selection.includes(searchValue) && searchValue.length>2}
   <span on:click={removeItems}>➕
     {searchValue}
   </span>
