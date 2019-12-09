@@ -15,9 +15,9 @@
   
   export let selectedOptions = writable(selection);
 
-  let addOption = (e)=>{
+  let addOption = (option)=>{
     const opts = get(selectedOptions)
-    const newopts = opts.concat(options)
+    const newopts = opts.concat(option)
     selectedOptions.set(newopts)
     searchValue=""
   }
@@ -56,6 +56,11 @@ li {
 </style>
 
 
+
+  <pre>debug {JSON.stringify($selectedOptions)}</pre>
+
+
+
 <div on:keydown={(e)=>{
   if(e.keyCode===13){
     searchValue="";
@@ -72,8 +77,6 @@ li {
   {:else}
     <InputField on:blur={()=>{isInteractive=false;}} value={selectedValue} type="text" bind:value={searchValue}/>
   {/if}
-
-  <pre>debug {JSON.stringify($selectedOptions)}</pre>
 
 
 </div> 
@@ -97,7 +100,7 @@ li {
   <div>
       <ul>      
           {#each displayedOptions as option, index}
-              <li on:click={addOption}>{option}</li>
+              <li on:click={()=>addOption(option)}>{option}</li>
           {/each}
       </ul>
   </div>
