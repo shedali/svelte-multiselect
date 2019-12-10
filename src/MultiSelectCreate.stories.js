@@ -22,8 +22,8 @@ export default {
 export const VerticalList = () => ({
 	Component: MultiSelectCreate,
 	props: {
-		vertical: boolean("vertical", false),
-		selection: array("selection", []),
+		vertical: boolean("vertical", true),
+		selection: array("selection", ["you", "can", "see"]),
 		availableOptions: array("available", ["plum", "tomato"])
 	}
 });

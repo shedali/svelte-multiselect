@@ -21,7 +21,8 @@ $: available = options;
 }
 
 .options-list {
-    cursor: pointer;
+  margin:30px 10px;
+  cursor: pointer;
   max-width:100px;
   display: flex;
   flex-direction: column;

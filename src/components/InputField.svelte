@@ -27,7 +27,7 @@ function whoosh(node, params) {
         border: 1px dotted grey;
         padding: 10px;
         cursor:pointer;
-        width:300px;
+        width:100px;
         border-radius:10px;
     }
 

@@ -45,7 +45,7 @@
   let available, canPressEnter, found;
   $: available = availableOptions
   .filter(v=>!$selectedOptions.includes(v))
-  .filter(v=>v.match(searchValue))
+  .filter(v=>v.match(searchValue)) || searchValue
   $: found = available.length<2
   $: canPressEnter = found && searchValue.length>2 && available;
 
@@ -67,7 +67,7 @@ ul, li {
 }
 
 .return {
-  font-size:30px;
+
 }
 
 ul, span {
@@ -112,16 +112,13 @@ li {
 </div> 
 
 {#if canCreate && !$selectedOptions.includes(searchValue)&& !selection.includes(searchValue) && searchValue.length>2}
-  <span on:click={removeItems}>➕
-    {searchValue}
-  </span>
+
 {/if}
 {#if canPressEnter}
-  <span class="return">⏎</span> {available}
+  <span class="return">{available.indexOf(searchValue)===0 ? available: searchValue} ⏎</span>
 {/if}
 
-
-<SelectedOptionsList selectedOptions={$selectedOptions} closeHandler={removeOption}/>
+<SelectedOptionsList vertical={vertical} selectedOptions={$selectedOptions} closeHandler={removeOption}/>
 
 <AvailableOptionsList options={available} addOption={(option)=>{
 addOption(option);
