@@ -1,6 +1,7 @@
 <script lang="typescript">
   import InputField from "./InputField.svelte"  
-  import MultiCreateItem from "./MultiCreateItem.svelte";
+  import AvailableOptionsList from "./AvailableOptionsList.svelte";
+  import SelectedOptionsList from "./SelectedOptionsList.svelte";
   import {writable, get, set} from "svelte/store";
   import {EditableField} from "@shedali/svelteeditableinput"
   import {afterUpdate} from "svelte";
@@ -17,7 +18,7 @@
   let searchValue = "";
 
   export let selectedOptions = writable(selection);
-  let ref;
+    let ref;
   let addOption = (option)=>{
     const opts = get(selectedOptions)
     const newopts = opts.concat(option)
@@ -54,38 +55,25 @@
 </script>
 
 <style>
+ul, li {
+  user-select: none;
+ -webkit-user-select: none;
+}
 .change-button{
   font-size: 18px;
   font-weight: bolder;
   padding:10px;
   margin:10px;
 }
-.vertical {
-  display: flex;
-  justify-items: space-between;
-  flex-direction: column;
-}
 
 .return {
   font-size:30px;
-}
-
-.option-item {
-  background-color: pink;
-  margin:1px;
-  border-radius:10px;
-  text-align:center;
 }
 
 ul, span {
   cursor: pointer;
 }
 
-.options-list {
-  max-width:100px;
-  display: flex;
-  flex-direction: column;
-}
 
 li {
   list-style: none;
@@ -133,18 +121,8 @@ li {
 {/if}
 
 
-<div data-testid="selected-items" class="selected-items" class:vertical={vertical}>
-{#each $selectedOptions as option, index}
-    <span>
-      <MultiCreateItem title={option} closeHandler={removeOption}/>
-  </span>
-{/each}
-</div>
+<SelectedOptionsList selectedOptions={$selectedOptions} closeHandler={removeOption}/>
 
-
-
-<div class='options-list'>      
-    {#each available as option, index}
-        <span class="option-item" on:click={()=>addOption(option)}>{option}</span>
-    {/each}
-</div>
+<AvailableOptionsList options={available} addOption={(option)=>{
+addOption(option);
+}}/>

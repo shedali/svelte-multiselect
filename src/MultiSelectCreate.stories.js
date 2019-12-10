@@ -1,4 +1,16 @@
-import { array, boolean, button, date, files, number, optionsKnob, radios, select, text, withKnobs } from "@storybook/addon-knobs";
+import {
+	array,
+	boolean,
+	button,
+	date,
+	files,
+	number,
+	optionsKnob,
+	radios,
+	select,
+	text,
+	withKnobs
+} from "@storybook/addon-knobs";
 
 import MultiSelectCreate from "./components/MultiSelectCreate.svelte";
 
@@ -10,9 +22,9 @@ export default {
 export const VerticalList = () => ({
 	Component: MultiSelectCreate,
 	props: {
-		vertical: boolean('vertical', false),
-		selection: array('selection', []),
-		availableOptions: array('available', ['plum', 'tomato'])
+		vertical: boolean("vertical", false),
+		selection: array("selection", []),
+		availableOptions: array("available", ["plum", "tomato"])
 	}
 });
 
@@ -20,40 +32,44 @@ export const createEnabled = () => ({
 	Component: MultiSelectCreate,
 	props: {
 		canCreate: true,
-		selection: array('selection', ['german', 'french', 'italian']),
-		availableOptions: array('available options', ['german', 'french', 'italian', 'english', 'latin']),
+		selection: array("selection", ["german", "french", "italian"]),
+		availableOptions: array("available options", [
+			"german",
+			"french",
+			"italian",
+			"english",
+			"latin"
+		])
 	}
 });
 
 createEnabled.story = {
-	name: 'MultiSelect with new item creation enabled',
+	name: "MultiSelect with new item creation enabled",
 	parameters: {
 		notes: `
 	    <h2>Create if item does not exist</h2>
 		If the entered item does not match any existing items, user is prompted to add a new item
-	  `,
-	},
+	  `
+	}
 };
-
 
 export const SelectedItem = () => ({
 	Component: MultiSelectCreate,
 
 	props: {
-		selection: array('selection', ['apple', 'banana', 'potato'])
+		selection: array("selection", ["apple", "banana", "potato"])
 	}
 });
 SelectedItem.story = {
-	name: 'Multi Select with an item pre-selected',
+	name: "Multi Select with an item pre-selected",
 	parameters: {
 		notes: {
 			introduction: `
 			This one has a preselected item. Use the knobs panel to change the value`,
-			Second: 'empty'
-		},
-	},
+			Second: "empty"
+		}
+	}
 };
-
 
 export const noCreate = () => ({
 	Component: MultiSelectCreate,

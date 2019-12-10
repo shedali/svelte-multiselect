@@ -36,5 +36,4 @@ test("should remove item when close clicked", async () => {
 	expect(close).not.toBeInTheDocument();
 });
 
-
-test.todo('should display preselecteditems')
+test.todo("should display preselecteditems");
