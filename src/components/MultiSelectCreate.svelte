@@ -1,4 +1,4 @@
-<script lang="typescript">
+<script>
   import InputField from "./InputField.svelte"  
   import AvailableOptionsList from "./AvailableOptionsList.svelte";
   import SelectedOptionsList from "./SelectedOptionsList.svelte";
@@ -85,13 +85,16 @@ li {
 
 <div on:keydown={(e)=>{
   if(e.keyCode===13){
-    if(canPressEnter){
-      
+    e.preventDefault();
+    if(canPressEnter && canCreate){
       addOption(available.toString().trim() || searchValue)
       searchValue="";
+    } else {
+
+      return;
     }
-    
-  }return
+  }
+  
   }}>
     {#if !isInteractive}
     <span class="change-button" on:click={()=>{
@@ -105,16 +108,16 @@ li {
     <InputField 
     bind:ref={ref}
     on:blur={()=>{isInteractive=false;}}
-     value={selectedValue} type="text" bind:value={searchValue}/>
+     value={selectedValue}  bind:value={searchValue}/>
   {/if}
 
 
 </div> 
 
 {#if canCreate && !$selectedOptions.includes(searchValue)&& !selection.includes(searchValue) && searchValue.length>2}
-
+  <div> what is this </div>
 {/if}
-{#if canPressEnter}
+{#if canPressEnter && canCreate}
   <span class="return">{available.indexOf(searchValue)===0 ? available: searchValue} ⏎</span>
 {/if}
 
