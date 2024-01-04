@@ -1,7 +1,8 @@
 <!--
---- Readme.md Snippet without images Start ---
+&lt;--- Readme.md Snippet without images Start ---&gt;
 ## Tech Stack
 shedali/svelte-multiselect is built on the following main stack:
+
 - [Jest](http://facebook.github.io/jest/) – Javascript Testing Framework
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) – Languages
 - [TypeScript](http://www.typescriptlang.org) – Languages
@@ -14,11 +15,13 @@ shedali/svelte-multiselect is built on the following main stack:
 - [Storybook](https://storybook.js.org/) – JavaScript Framework Components
 
 Full tech stack [here](/techstack.md)
---- Readme.md Snippet without images End ---
 
---- Readme.md Snippet with images Start ---
+&lt;--- Readme.md Snippet without images End ---&gt;
+
+&lt;--- Readme.md Snippet with images Start ---&gt;
 ## Tech Stack
 shedali/svelte-multiselect is built on the following main stack:
+
 - <img width='25' height='25' src='https://img.stackshare.io/service/830/jest.png' alt='Jest'/> [Jest](http://facebook.github.io/jest/) – Javascript Testing Framework
 - <img width='25' height='25' src='https://img.stackshare.io/service/1209/javascript.jpeg' alt='JavaScript'/> [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) – Languages
 - <img width='25' height='25' src='https://img.stackshare.io/service/1612/bynNY5dJ.jpg' alt='TypeScript'/> [TypeScript](http://www.typescriptlang.org) – Languages
@@ -31,14 +34,15 @@ shedali/svelte-multiselect is built on the following main stack:
 - <img width='25' height='25' src='https://img.stackshare.io/service/9240/sOct-Txm_400x400.png' alt='Storybook'/> [Storybook](https://storybook.js.org/) – JavaScript Framework Components
 
 Full tech stack [here](/techstack.md)
---- Readme.md Snippet with images End ---
+
+&lt;--- Readme.md Snippet with images End ---&gt;
 -->
 <div align="center">
 
 # Tech Stack File
 ![](https://img.stackshare.io/repo.svg "repo") [shedali/svelte-multiselect](https://github.com/shedali/svelte-multiselect)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
-|30<br/>Tools used|11/09/23 <br/>Report generated|
+|32<br/>Tools used|01/04/24 <br/>Report generated|
 |------|------|
 </div>
 
@@ -175,9 +179,9 @@ Full tech stack [here](/techstack.md)
 </table>
 
 
-## <img src='https://img.stackshare.io/group.svg' /> Open source packages (16)</h2>
+## <img src='https://img.stackshare.io/group.svg' /> Open source packages (18)</h2>
 
-## <img width='24' height='24' src='https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png'/> npm (16)
+## <img width='24' height='24' src='https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png'/> npm (18)
 
 |NAME|VERSION|LAST UPDATED|LAST UPDATED BY|LICENSE|VULNERABILITIES|
 |:------|:------|:------|:------|:------|:------|
@@ -191,6 +195,8 @@ Full tech stack [here](/techstack.md)
 |[@testing-library/jest-dom](https://www.npmjs.com/@testing-library/jest-dom)|v4.2.4|12/09/19|Franz |MIT|N/A|
 |[babel-jest](https://www.npmjs.com/babel-jest)|v24.9.0|12/09/19|Franz |MIT|N/A|
 |[babel-loader](https://www.npmjs.com/babel-loader)|v8.0.6|12/09/19|Franz |MIT|N/A|
+|[husky](https://www.npmjs.com/husky)|v3.1.0|12/09/19|Franz |MIT|N/A|
+|[lint-staged](https://www.npmjs.com/lint-staged)|v9.5.0|12/09/19|Franz |MIT|N/A|
 |[npm-run-all](https://www.npmjs.com/npm-run-all)|v4.1.5|12/09/19|Franz |MIT|N/A|
 |[rollup-plugin-commonjs](https://www.npmjs.com/rollup-plugin-commonjs)|v10.1.0|12/09/19|Franz |MIT|N/A|
 |[rollup-plugin-livereload](https://www.npmjs.com/rollup-plugin-livereload)|v1.0.1|12/09/19|Franz |MIT|N/A|
@@ -201,4 +207,4 @@ Full tech stack [here](/techstack.md)
 <br/>
 <div align='center'>
 
-Generated via [Stack File](https://github.com/apps/stack-file)
+Generated via [Stack File](https://github.com/marketplace/stack-file)
